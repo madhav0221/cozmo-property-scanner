@@ -1,3 +1,15 @@
+Metadata-Version: 2.4
+Name: cozmo-scan
+Version: 0.1.0
+Summary: Property scanning CLI and analysis pipeline
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.26
+Requires-Dist: Pillow>=10.0.0
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn>=0.30.0
+Requires-Dist: python-multipart>=0.0.9
+
 # Cozmo Property Scanner
 
 A lightweight property-analysis pipeline inspired by the project discussion in the shared chat. It is intentionally designed as a local Python CLI: one capture input yields a structured result JSON and a rendered floor-plan artifact.
