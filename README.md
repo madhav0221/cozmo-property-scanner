@@ -1,6 +1,6 @@
 # Cozmo Property Scanner
 
-A lightweight property-analysis pipeline inspired by the project discussion in the shared chat. It is intentionally designed as a local Python CLI: one capture input yields a structured result JSON and a rendered floor-plan artifact.
+A lightweight property-analysis pipeline. It is intentionally designed as a local Python CLI: one capture input yields a structured result JSON and a rendered floor-plan artifact.
 
 ## Goals
 
