@@ -20,4 +20,4 @@ python -m cozmo_scan.cli --tier video --input .\benchmark\raw\multi_room\video -
 python -m cozmo_scan.cli --tier lidar --input .\benchmark\raw\multi_room\lidar --output .\benchmark\runs\multi_room_lidar
 ```
 
-Each output folder must retain `result.json`, rendered plans, measurements, damage, scope, diagnostics, and the command metadata used to create it. The current starter pipeline creates the contract artifacts; real sensor reconstruction and diagnostics remain implementation work.
+Each output folder must retain `result.json`, rendered plans, measurements, damage, scope, diagnostics, and the command metadata used to create it. LiDAR runs additionally retain `point_cloud.ply` and depth/pose reconstruction diagnostics. Photo and video runs retain the common contract while their geometry status remains explicitly marked in the result.

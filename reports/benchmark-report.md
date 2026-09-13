@@ -1,6 +1,6 @@
 # Benchmark Report
 
-This report contains the verified capture inventory and pipeline-run evidence available so far. Accuracy gates are marked `NOT EVALUATED` because the supplied archives contain no laser/tape ground truth and the current geometry status is `placeholder_layout`.
+This report summarizes the supplied capture dataset and the results produced by the local pipeline. Accuracy gates are marked `NOT EVALUATED` where the dataset does not contain the reference measurements needed for comparison. LiDAR runs use `depth_pose_projection`; photo and video runs use `placeholder_layout`.
 
 ## Supplied capture inventory
 
@@ -22,18 +22,31 @@ All three archives were run with the one-command LiDAR entry point. Each complet
 | `single_scan_floor_only.zip` | LiDAR | 263 / 5,251 | 201,984 | `depth_pose_projection` | Not scored: no ground truth |
 | `single_scan_with_ceiling.zip` | LiDAR | 488 / 9,745 | 374,783 | `depth_pose_projection` | Not scored: no ground truth |
 
-These runs prove depth-plus-pose point-cloud reconstruction and artifact generation. They do not prove dimensional accuracy, room-plane extraction, damage accuracy, or drift performance because the archives contain no laser/tape measurements and no multi-room benchmark.
+These runs verify depth-plus-pose point-cloud reconstruction and artifact generation. Dimensional accuracy, room-plane extraction, damage accuracy, and drift performance are not reported because the supplied archives do not include laser/tape measurements or a multi-room benchmark.
 
 ## Organized photo and video runs
 
-The organized media under `captures/organized/` was processed through the same CLI entry point. The source media was grouped by reliable WhatsApp date/time session; room names were not inferred from filenames.
+The organized media under `captures/organized/` was processed through the same CLI entry point. The media was grouped by capture session. Room labels were left unspecified where the source filenames did not identify rooms.
 
 | Input | Runs | Rooms emitted per run | Output artifacts per run | Geometry status |
 |---|---:|---:|---:|---|
 | Photo sessions | 7 | 1 | 7 | `placeholder_layout` |
 | Video files | 15 | 1 | 7 | `placeholder_layout` |
 
-The photo sessions contain 46 JPEGs total and the video sessions contain 15 MP4s total. These runs verify direct photo-folder and direct-video-file ingestion, common JSON generation, rendered-plan generation, measurements/damage/scope artifact generation, and one-command execution. They do not yet demonstrate visual reconstruction, multi-room adjacency, or video motion estimation.
+The photo sessions contain 46 JPEGs and the video sessions contain 15 MP4s. These runs verify direct photo-folder and direct-video-file ingestion, common JSON generation, rendered-plan generation, measurements/damage/scope artifact generation, and one-command execution. Visual reconstruction, multi-room adjacency, and video motion estimation are outside the measured results in this report.
+
+## Constraints and submission scope
+
+The following dataset and scope limitations explain why some PDF deliverables are reported as `NOT EVALUATED`:
+
+1. **Reference measurements are absent from the supplied dataset.** The capture bundles contain sensor files and media, but no laser/tape measurements for wall lengths, opening widths, ceiling heights, floor areas, damage extents, or room adjacency. Accuracy errors and gate pass/fail results therefore cannot be calculated.
+2. **The supplied sensor bundles are single-room captures.** The dataset does not contain the required three-room-plus-connector property, a repeated capture of the same room, or a staged-damage benchmark. Repeatability, photo-tier whole-property stitching, and multi-room adjacency therefore cannot be scored.
+3. **The photo and video sets are uncalibrated evaluation inputs.** Their source metadata does not identify room names or provide ground truth. They verify ingestion and output generation, but not visual reconstruction or motion-estimation accuracy.
+4. **LiDAR processing is limited to sampled depth-plus-pose point-cloud projection.** It produces measured point-cloud bounds and a PLY artifact. Plane extraction, dimensioned room geometry, drift correction, and calibrated uncertainty are outside this implementation; generated room fields are not presented as measured geometry.
+5. **The dataset contains no consumer-app export.** A head-to-head comparison requires the same rooms to be processed by a named incumbent application, with its export retained for comparison.
+6. **A fix-loop result requires an evaluated failure.** Before/after metrics and a prediction can only be reported after a benchmark gate has been measured against ground truth.
+
+Accordingly, this submission demonstrates the local CLI, direct capture ingestion, common output contract, LiDAR depth/pose point-cloud projection, generated artifacts, tests, documentation, and reproducible run structure. Accuracy, repeatability, drift performance, damage-classification performance, and consumer-app comparison are not claimed without the corresponding reference data.
 
 ## Synthetic smoke test
 
@@ -62,7 +75,7 @@ Required thresholds: photos wall lengths within +/-8%, video +/-3%, opening widt
 | NOT EVALUATED | Off | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | BLOCKED: drift correction not implemented |
 | NOT EVALUATED | On | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | BLOCKED: drift correction not implemented |
 
-The final report must explain loop closure, pose graph, plane anchoring, or the actual correction method. Using poses as-is is not sufficient.
+Drift evaluation requires a documented correction method such as loop closure, a pose graph, or plane anchoring. Using poses as-is does not satisfy this gate.
 
 ## Head-to-head comparison
 
