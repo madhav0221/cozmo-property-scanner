@@ -1,0 +1,51 @@
+{
+  "source_directory": "C:/Users/madha/Downloads/zips",
+  "capture_type": "LiDAR-style sensor bundles",
+  "processed_tier": "lidar",
+  "captures": [
+    {
+      "name": "single_room",
+      "files": 3434,
+      "bytes": 88503534,
+      "extensions": {".csv": 3, ".mp4": 1, ".png": 3430},
+      "camera_matrix_first_rows": [
+        [1599.6957, 0.0, 955.5105],
+        [0.0, 1599.6957, 717.8084]
+      ],
+      "rooms_emitted_by_current_pipeline": 1,
+      "reconstruction": {"status": "depth_pose_projection", "frames_used": 86, "frames_available": 1715, "points": 66007, "world_bounds_m": {"min": [-6.8309, -1.6248, -1.705], "max": [2.6139, 0.6581, 5.5807]}},
+      "output_directory": "outputs/extracted/single_room"
+    },
+    {
+      "name": "single_scan_floor_only",
+      "files": 10506,
+      "bytes": 276731533,
+      "extensions": {".csv": 3, ".mp4": 1, ".png": 10502},
+      "camera_matrix_first_rows": [
+        [1598.7919, 0.0, 955.38934],
+        [0.0, 1598.7919, 717.7579]
+      ],
+      "rooms_emitted_by_current_pipeline": 1,
+      "reconstruction": {"status": "depth_pose_projection", "frames_used": 263, "frames_available": 5251, "points": 201984, "world_bounds_m": {"min": [-9.6595, -2.3416, -6.9135], "max": [5.1834, 1.4026, 10.308]}},
+      "output_directory": "outputs/extracted/single_scan_floor_only"
+    },
+    {
+      "name": "single_scan_with_ceiling",
+      "files": 19494,
+      "bytes": 508445090,
+      "extensions": {".csv": 3, ".mp4": 1, ".png": 19490},
+      "camera_matrix_first_rows": [
+        [1601.0514, 0.0, 955.82275],
+        [0.0, 1601.0514, 717.7025]
+      ],
+      "rooms_emitted_by_current_pipeline": 1,
+      "reconstruction": {"status": "depth_pose_projection", "frames_used": 488, "frames_available": 9745, "points": 374783, "world_bounds_m": {"min": [-5.3944, -2.7466, -5.2267], "max": [7.7956, 3.0818, 10.1285]}},
+      "output_directory": "outputs/extracted/single_scan_with_ceiling"
+    }
+  ],
+  "limitations": [
+    "The current pipeline reconstructs a sampled point cloud from depth, intrinsics, and odometry; RGB video is inventoried but not yet used for semantic reconstruction.",
+    "The emitted room measurements remain deterministic starter values and are not benchmark accuracy results.",
+    "No laser ground truth was included in the three archives, so gate metrics cannot be calculated yet."
+  ]
+}

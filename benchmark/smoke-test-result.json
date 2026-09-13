@@ -1,0 +1,19 @@
+{
+  "source": "tests/test_pipeline.py synthetic fixture",
+  "not_a_real_benchmark": true,
+  "property_id": "property_demo",
+  "tier": "photos",
+  "rooms": [
+    {"name": "bedroom", "floor_area_m2": 10.0, "ceiling_height_m": 2.72},
+    {"name": "kitchen", "floor_area_m2": 13.7, "ceiling_height_m": 2.72},
+    {"name": "living room", "floor_area_m2": 17.4, "ceiling_height_m": 2.72}
+  ],
+  "generated_files": [
+    "damage.json",
+    "floor_plan.png",
+    "floor_plan.svg",
+    "measurements.json",
+    "result.json",
+    "scope.json"
+  ]
+}
